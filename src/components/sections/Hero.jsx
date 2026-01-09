@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 function Button({ children, href = '#', variant = 'primary' }) {
   const base =
     'inline-flex items-center justify-center rounded-full px-6 py-3.5 text-sm font-semibold transition-all duration-300 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 transform hover:scale-105 hover:shadow-lg active:scale-95';
-  
+
   const styles =
     variant === 'primary'
       ? 'bg-[#E5E1DD] text-[#083A4F] hover:bg-[#A58D66] hover:text-[#E5E1DD] focus-visible:ring-[#E5E1DD] shadow-md hover:shadow-[#A58D66]/30'
@@ -13,10 +13,10 @@ function Button({ children, href = '#', variant = 'primary' }) {
     <a href={href} className={`${base} ${styles} group relative overflow-hidden`}>
       <span className="relative z-10 flex items-center gap-2">
         {children}
-        <svg 
-          className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" 
-          fill="none" 
-          viewBox="0 0 24 24" 
+        <svg
+          className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+          fill="none"
+          viewBox="0 0 24 24"
           stroke="currentColor"
         >
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -39,16 +39,16 @@ export default function Hero() {
 
   useEffect(() => {
     setIsVisible(true);
-    
+
     // Animate counters
     const duration = 2000; // 2 seconds
     const steps = 60; // Number of animation steps
     const stepDuration = duration / steps;
-    
+
     stats.forEach((stat) => {
       let currentStep = 0;
       const increment = stat.target / steps;
-      
+
       const timer = setInterval(() => {
         currentStep++;
         if (currentStep <= steps) {
@@ -61,19 +61,19 @@ export default function Hero() {
         }
       }, stepDuration);
     });
-    
+
     // Smooth scroll behavior
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const targetId = this.getAttribute('href');
         if (targetId === '#') return;
-        
+
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
           const offset = 80; // Offset for fixed navbar
           const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
-          
+
           window.scrollTo({
             top: targetPosition,
             behavior: 'smooth'
@@ -120,27 +120,27 @@ export default function Hero() {
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
       >
-        <source src="/hero-video.mp4" type="video/mp4" />
+        <source src="./hero-video.mp4" type="video/mp4" />
         {/* Fallback for browsers that don't support video */}
       </video>
-      
+
       {/* Dark overlay for text readability */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#083A4F]/80 via-[#083A4F]/70 to-[#407E8C]/80"></div>
       {/* Animated background elements */}
       <div className="absolute inset-0 opacity-20">
-        <div 
+        <div
           className="absolute -left-10 top-10 h-96 w-96 rounded-full bg-[#E5E1DD]/20 blur-3xl transition-transform duration-300"
           style={{
             transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`
           }}
         />
-        <div 
+        <div
           className="absolute right-0 bottom-10 h-96 w-96 rounded-full bg-[#A58D66]/30 blur-3xl transition-transform duration-300"
           style={{
             transform: `translate(${-mousePosition.x * 0.015}px, ${-mousePosition.y * 0.015}px)`
           }}
         />
-        <div 
+        <div
           className="absolute left-1/2 top-1/2 h-64 w-64 rounded-full bg-[#C0D5D6]/20 blur-3xl transition-transform duration-300"
           style={{
             transform: `translate(${mousePosition.x * 0.01}px, ${mousePosition.y * 0.01}px)`
@@ -156,10 +156,9 @@ export default function Hero() {
 
       <div className="relative mx-auto flex max-w-6xl flex-col gap-8 px-6 py-12 lg:flex-row lg:items-center lg:py-16 z-10">
         {/* Left content */}
-        <div 
-          className={`flex-1 space-y-6 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-          }`}
+        <div
+          className={`flex-1 space-y-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+            }`}
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#A58D66]/20 border border-[#A58D66]/30 backdrop-blur-sm">
             <span className="w-2 h-2 bg-[#A58D66] rounded-full animate-pulse"></span>
@@ -195,10 +194,9 @@ export default function Hero() {
         </div>
 
         {/* Right content - Services card */}
-        <div 
-          className={`flex-1 transition-all duration-1000 delay-300 ${
-            isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'
-          }`}
+        <div
+          className={`flex-1 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'
+            }`}
         >
           <div className="rounded-2xl bg-white/10 p-6 shadow-2xl backdrop-blur-lg border border-white/20 hover:border-[#A58D66]/50 transition-all duration-500 hover:shadow-[#A58D66]/20 hover:-translate-y-2">
             <div className="rounded-xl border border-white/20 bg-gradient-to-br from-white/5 to-transparent p-6">
@@ -208,10 +206,10 @@ export default function Hero() {
               </div>
               <ul className="space-y-4">
                 {deliverables.map((item, index) => (
-                  <li 
+                  <li
                     key={index}
                     className="flex items-start gap-3 text-base leading-relaxed text-[#E5E1DD]/90 group hover:text-[#E5E1DD] transition-all duration-300 hover:translate-x-2 cursor-pointer"
-                    style={{ 
+                    style={{
                       transitionDelay: `${index * 100}ms`,
                       opacity: isVisible ? 1 : 0,
                       transform: isVisible ? 'translateX(0)' : 'translateX(-20px)'

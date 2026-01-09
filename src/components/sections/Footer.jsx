@@ -2,17 +2,16 @@ import { useState } from 'react';
 
 function Logo({ variant = 'default' }) {
   const isFooter = variant === 'footer';
-  
+
   return (
     <div className="flex items-center gap-3">
       <div className="relative">
         {/* Your logo images - separate for navbar and footer */}
-        <img 
-          src={isFooter ? "/logo-footer.png" : "/logo-navbar.png"}
-          alt="KCMP & Associates Logo" 
-          className={`${isFooter ? 'h-40' : 'h-24'} w-auto object-contain ${
-            !isFooter ? 'rounded-xl bg-[#E5E1DD]/95 backdrop-blur-lg p-2' : ''
-          }`}
+        <img
+          src={isFooter ? "./logo-footer.png" : "./logo-navbar.png"}
+          alt="KCMP & Associates Logo"
+          className={`${isFooter ? 'h-40' : 'h-24'} w-auto object-contain ${!isFooter ? 'rounded-xl bg-[#E5E1DD]/95 backdrop-blur-lg p-2' : ''
+            }`}
         />
       </div>
     </div>
@@ -32,24 +31,24 @@ export default function Footer() {
   ];
 
   const socialLinks = [
-    { 
-      name: 'LinkedIn', 
+    {
+      name: 'LinkedIn',
       icon: (
         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
         </svg>
       )
     },
-    { 
-      name: 'Email', 
+    {
+      name: 'Email',
       icon: (
         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
         </svg>
       )
     },
-    { 
-      name: 'Phone', 
+    {
+      name: 'Phone',
       icon: (
         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -63,7 +62,7 @@ export default function Footer() {
       {/* Decorative background elements */}
       <div className="absolute top-0 left-0 w-64 h-64 bg-[#407E8C]/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#A58D66]/10 rounded-full blur-3xl"></div>
-      
+
       <div className="relative z-10">
         {/* Main footer content */}
         <div className="mx-auto max-w-6xl px-6 py-12">
@@ -74,7 +73,7 @@ export default function Footer() {
               <p className="text-sm text-[#C0D5D6]/80 leading-relaxed pl-3">
                 Trusted financial advisors since 1982, providing comprehensive solutions for businesses across India.
               </p>
-              
+
               {/* Social links */}
               <div className="flex gap-3 pl-3 pt-2">
                 {socialLinks.map((social, index) => (
@@ -104,14 +103,12 @@ export default function Footer() {
                     onMouseLeave={() => setHoveredLink('')}
                     className="text-sm text-[#C0D5D6] hover:text-[#E5E1DD] transition-all duration-300 flex items-center gap-2 group"
                   >
-                    <span 
-                      className={`w-0 h-0.5 bg-[#A58D66] transition-all duration-300 ${
-                        hoveredLink === link.name ? 'w-4' : 'w-0'
-                      }`}
+                    <span
+                      className={`w-0 h-0.5 bg-[#A58D66] transition-all duration-300 ${hoveredLink === link.name ? 'w-4' : 'w-0'
+                        }`}
                     ></span>
-                    <span className={`transition-transform duration-300 ${
-                      hoveredLink === link.name ? 'translate-x-1' : ''
-                    }`}>
+                    <span className={`transition-transform duration-300 ${hoveredLink === link.name ? 'translate-x-1' : ''
+                      }`}>
                       {link.name}
                     </span>
                   </a>

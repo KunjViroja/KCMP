@@ -2,17 +2,16 @@ import { useState, useEffect } from 'react';
 
 function Logo({ variant = 'default' }) {
   const isFooter = variant === 'footer';
-  
+
   return (
     <div className="flex items-center gap-3">
       <div className="relative">
         {/* Your logo images - separate for navbar and footer */}
-        <img 
-          src={isFooter ? "/logo-footer.png" : "/logo-navbar.png"}
-          alt="KCMP & Associates Logo" 
-          className={`${isFooter ? 'h-16' : 'h-20'} w-auto object-contain ${
-            !isFooter ? 'rounded-xl bg-[#E5E1DD]/95 backdrop-blur-lg p-2' : ''
-          }`}
+        <img
+          src={isFooter ? "./logo-footer.png" : "./logo-navbar.png"}
+          alt="KCMP & Associates Logo"
+          className={`${isFooter ? 'h-16' : 'h-20'} w-auto object-contain ${!isFooter ? 'rounded-xl bg-[#E5E1DD]/95 backdrop-blur-lg p-2' : ''
+            }`}
         />
       </div>
     </div>
@@ -22,7 +21,7 @@ function Logo({ variant = 'default' }) {
 function Button({ children, href = '#', variant = 'primary' }) {
   const base =
     'inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition-all duration-300 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 transform hover:scale-105 hover:shadow-lg active:scale-95';
-  
+
   const styles =
     variant === 'primary'
       ? 'bg-[#083A4F] text-[#E5E1DD] hover:bg-[#407E8C] focus-visible:ring-[#083A4F] shadow-md hover:shadow-[#407E8C]/30'
@@ -32,12 +31,12 @@ function Button({ children, href = '#', variant = 'primary' }) {
     e.preventDefault();
     const targetId = href;
     if (targetId === '#') return;
-    
+
     const targetElement = document.querySelector(targetId);
     if (targetElement) {
       const offset = 80;
       const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
-      
+
       window.scrollTo({
         top: targetPosition,
         behavior: 'smooth'
@@ -49,10 +48,10 @@ function Button({ children, href = '#', variant = 'primary' }) {
     <a href={href} onClick={handleClick} className={`${base} ${styles} group relative overflow-hidden`}>
       <span className="relative z-10 flex items-center gap-2">
         {children}
-        <svg 
-          className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" 
-          fill="none" 
-          viewBox="0 0 24 24" 
+        <svg
+          className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+          fill="none"
+          viewBox="0 0 24 24"
           stroke="currentColor"
         >
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -101,14 +100,14 @@ export default function NavBar() {
   const handleNavClick = (e, href) => {
     e.preventDefault();
     setOpen(false);
-    
+
     const targetId = href.substring(1);
     const targetElement = document.getElementById(targetId);
-    
+
     if (targetElement) {
       const offset = 80;
       const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
-      
+
       window.scrollTo({
         top: targetPosition,
         behavior: 'smooth'
@@ -117,17 +116,16 @@ export default function NavBar() {
   };
 
   return (
-    <header 
-      className={`sticky top-0 z-50 transition-all duration-500 ${
-        scrolled 
-          ? 'bg-[#E5E1DD]/95 backdrop-blur-lg shadow-lg border-b border-[#C0D5D6]' 
+    <header
+      className={`sticky top-0 z-50 transition-all duration-500 ${scrolled
+          ? 'bg-[#E5E1DD]/95 backdrop-blur-lg shadow-lg border-b border-[#C0D5D6]'
           : 'bg-[#E5E1DD]/90 backdrop-blur border-b border-[#C0D5D6]/60'
-      }`}
+        }`}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-2">
         {/* Logo */}
-        <a 
-          href="#home" 
+        <a
+          href="#home"
           onClick={(e) => handleNavClick(e, '#home')}
           className="cursor-pointer"
         >
@@ -143,15 +141,13 @@ export default function NavBar() {
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className={`relative py-2 transition-all duration-300 group ${
-                  isActive ? 'text-[#407E8C]' : 'text-[#083A4F] hover:text-[#407E8C]'
-                }`}
+                className={`relative py-2 transition-all duration-300 group ${isActive ? 'text-[#407E8C]' : 'text-[#083A4F] hover:text-[#407E8C]'
+                  }`}
               >
                 {link.label}
-                <span 
-                  className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[#407E8C] to-[#A58D66] transition-all duration-300 ${
-                    isActive ? 'w-full' : 'w-0 group-hover:w-full'
-                  }`}
+                <span
+                  className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[#407E8C] to-[#A58D66] transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                    }`}
                 ></span>
               </a>
             );
@@ -165,18 +161,17 @@ export default function NavBar() {
 
         {/* Mobile Menu Button */}
         <button
-          className={`lg:hidden inline-flex h-11 w-11 items-center justify-center rounded-xl border-2 transition-all duration-300 ${
-            open 
-              ? 'border-[#407E8C] bg-[#407E8C] text-[#E5E1DD] rotate-90' 
+          className={`lg:hidden inline-flex h-11 w-11 items-center justify-center rounded-xl border-2 transition-all duration-300 ${open
+              ? 'border-[#407E8C] bg-[#407E8C] text-[#E5E1DD] rotate-90'
               : 'border-[#C0D5D6] bg-[#E5E1DD] text-[#083A4F] hover:border-[#407E8C] hover:bg-[#C0D5D6]'
-          }`}
+            }`}
           onClick={() => setOpen((p) => !p)}
           aria-label="Toggle navigation"
         >
-          <svg 
-            className={`w-6 h-6 transition-transform duration-300 ${open ? 'rotate-180' : ''}`} 
-            fill="none" 
-            viewBox="0 0 24 24" 
+          <svg
+            className={`w-6 h-6 transition-transform duration-300 ${open ? 'rotate-180' : ''}`}
+            fill="none"
+            viewBox="0 0 24 24"
             stroke="currentColor"
           >
             {open ? (
@@ -189,10 +184,9 @@ export default function NavBar() {
       </div>
 
       {/* Mobile Navigation Menu */}
-      <div 
-        className={`lg:hidden border-t border-[#C0D5D6] bg-[#E5E1DD]/98 backdrop-blur-lg transition-all duration-500 overflow-hidden ${
-          open ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-        }`}
+      <div
+        className={`lg:hidden border-t border-[#C0D5D6] bg-[#E5E1DD]/98 backdrop-blur-lg transition-all duration-500 overflow-hidden ${open ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+          }`}
       >
         <div className="mx-auto flex max-w-6xl flex-col gap-1 px-6 py-4">
           {navLinks.map((link, index) => {
@@ -202,11 +196,10 @@ export default function NavBar() {
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className={`py-3 px-4 rounded-lg text-sm font-semibold transition-all duration-300 ${
-                  isActive 
-                    ? 'bg-[#407E8C] text-[#E5E1DD]' 
+                className={`py-3 px-4 rounded-lg text-sm font-semibold transition-all duration-300 ${isActive
+                    ? 'bg-[#407E8C] text-[#E5E1DD]'
                     : 'text-[#083A4F] hover:bg-[#C0D5D6] hover:text-[#407E8C]'
-                }`}
+                  }`}
                 style={{
                   transitionDelay: open ? `${index * 50}ms` : '0ms'
                 }}
